@@ -6,4 +6,8 @@ public class UnknownTransactionTypeException extends RuntimeException {
     public UnknownTransactionTypeException() {
         super(UNKNOWN_TRANSACTION_TYPE_EXCEPTION_MSG);
     }
+
+    public UnknownTransactionTypeException(String operationTye) {
+        super(UNKNOWN_TRANSACTION_TYPE_EXCEPTION_MSG+": "+operationTye);
+    }
 }

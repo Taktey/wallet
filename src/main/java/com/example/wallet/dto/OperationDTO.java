@@ -1,16 +1,12 @@
 package com.example.wallet.dto;
 
-import com.example.wallet.model.OperationType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.UUID;
 
 
 @Getter
@@ -27,7 +23,11 @@ public class OperationDTO {
     private String walletId;
 
     @NotNull(message = "operationType обязателен")
-    private OperationType operationType;
+    @Pattern(
+            regexp = "DEPOSIT|WITHDRAW",
+            message = "operationType должен быть DEPOSIT или WITHDRAWAL"
+    )
+    private String operationType;
 
     @Min(value = 1, message = "amount должен быть больше 0")
     private int amount;
