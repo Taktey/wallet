@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: your_name
+      changes:
+        - createTable:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: "uuid_generate_v4()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: amount
+                  type: INT
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2-insert-wallet-data
+      author: your_name
+      changes:
+        - insert:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  value: "b3a1b9b6-8c7f-4d3c-b1b1-d5c1f8a8e02b"
+              - column:
+                  name: amount
+                  value: 100
+        - insert:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  value: "5f7d2c69-3e4a-4f8d-8c77-9e5b3a1f9d0e"
+              - column:
+                  name: amount
+                  value: 200
+        - insert:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  value: "9a6d8e2f-5b3c-4a1b-9c7f-7d5e3b2a1f8d"
+              - column:
+                  name: amount
+                  value: 300
